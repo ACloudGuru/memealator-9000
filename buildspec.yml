@@ -1,0 +1,24 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+# Amazon linux is setup to use ASCII. Click requires a UTF-8 locale
+      - export LC_ALL=en_US.UTF-8
+      - export LANG=en_US.UTF-8
+# Update
+      - yum -y update
+# Install python 3.6, and dependencies for Pillow and pipenv
+      - yum -y install python36 python36-pip libjpeg libjpeg-devel zlib-devel which
+# Set up pipenv
+      - pip-3.6 install pipenv
+      - pipenv --three
+# Memealator dependencies
+      - pipenv install -d
+  build:
+    commands:
+# Build and create .zip file
+      - pipenv run "python setup.py ldist"
+artifacts:
+  files:
+    - dist/*.zip

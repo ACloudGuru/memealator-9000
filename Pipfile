@@ -1,0 +1,24 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+
+[packages]
+
+markovify = "*"
+requests = "*"
+flickrapi = "*"
+pillow = "*"
+click = "*"
+
+
+[dev-packages]
+
+lambda_setuptools = "*"
+
+
+[requires]
+
+python_version = "3.6"
